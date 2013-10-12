@@ -1,4 +1,3 @@
-
 public class Test {
 
 	/**
@@ -44,9 +43,6 @@ public class Test {
 
 /*
  * 
- * Jonas      , Matrnr           : Klasse Pumpkin
- * Angelika Fürndraht-Grossschopf, Matrnr       : Klassen Competition und Day
- * Brigitte Withalm, Matrnr 1126733: Testklasse
  * 
  * gemeinsam: Interpretation der Aufgabenstellung und Konzept
  * 
@@ -55,17 +51,17 @@ public class Test {
 /*
 weiters zu testen
 
-In Trockenperioden stellt der Kürbis das Wachstum ein. Hat es in den letzten 5 Tagen 
-zusammengenommen weniger als 10% Wasser gegeben, geht das Wachstum auf die Hälfte zurück. 
+In Trockenperioden stellt der Kï¿½rbis das Wachstum ein. Hat es in den letzten 5 Tagen 
+zusammengenommen weniger als 10% Wasser gegeben, geht das Wachstum auf die Hï¿½lfte zurï¿½ck. 
 Hat es in den letzten 10 Tagen zusammengenommen weniger als 10% Wasser gegeben, wird das 
 Wachstum sogar ganz eingestellt.
 
-Schnecken lieben Feuchtigkeit, vor allem gleichmäßige Feuchtigkeit. An jedem Tag mit 
-mindestens 50% Wasser machen sie sich über die Blätter her und sorgen dafür, dass der Kürbis 
-1% seines Gewichts verliert. Ab 30% Wasser in den letzten 2 Tagen verliert der Kürbis 
+Schnecken lieben Feuchtigkeit, vor allem gleichmï¿½ï¿½ige Feuchtigkeit. An jedem Tag mit 
+mindestens 50% Wasser machen sie sich ï¿½ber die Blï¿½tter her und sorgen dafï¿½r, dass der Kï¿½rbis 
+1% seines Gewichts verliert. Ab 30% Wasser in den letzten 2 Tagen verliert der Kï¿½rbis 
 ebenso 1% des Gewichts, genauso wie ab 10% Wasser in den letzten 4 Tagen.
 
-Die tatsächlichen klimatischen Bedingungen dürfen nicht ganz außer Acht gelassen werden. 
+Die tatsï¿½chlichen klimatischen Bedingungen dï¿½rfen nicht ganz auï¿½er Acht gelassen werden. 
 Daher muss es mindestens 10 Tage mit 100% Wasser und mindestens 10 Tage mit 100% Sonne geben.
-Wird der Kürbis an einem Tag gar nicht versorgt, erhält er weder Wasser noch Licht.
+Wird der Kï¿½rbis an einem Tag gar nicht versorgt, erhï¿½lt er weder Wasser noch Licht.
  */
