@@ -1,7 +1,9 @@
 
 public class Day implements IntDay{
 
-
+	/**
+	 * @author Angelika
+	 */
 	public static int dayCompetition;
 
 	//gibt an, der wievielte Wettkampftag dieser Tag ist.

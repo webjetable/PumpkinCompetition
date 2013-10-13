@@ -2,6 +2,9 @@ import java.util.ArrayList;
 
 public class Competition implements IntCompetition{
 
+	/**
+	 * @author Angelika
+	 */
 	private ArrayList<Day> comp;
 	private int days;
 	private int today;
