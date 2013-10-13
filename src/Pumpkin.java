@@ -1,48 +1,73 @@
+/**
+ * @author Jonas Raditschnig (1021251)
+ */
 
-public class Pumpkin implements Growable {
+public class Pumpkin implements Growable
+{
 	
-	//Gewicht des Kürbisses
-	double weight;
-	//Alter in Tagen
-	int age;
+	private double 	weight;
+	private int 	age;
 	
+	/**
+	 * Liefert den Prozentsatz des Kürbisses der von Schecken zerfressen wird.
+	 * @param d Aktueller Tag
+	 * @param c Wettkampf der alle vorherigen Tage gespeichert hat
+	 */
+	private double snails(IntDay d, IntCompetition c)
+	{
+		double snailrate = 0.0;
+
+		snailrate += d.getPerRain()>=50	 ? 0.1 : 0.0;  
+		snailrate += c.getAvgRain(2)>=30 ? 0.1 : 0.0;
+		snailrate += c.getAvgRain(4)>=10 ? 0.1 : 0.0;
+
+		return snailrate;
+	}
+
+	/**
+	 * Generiert einen Kürbis mit Gewicht und Alter.
+	 */
 	public Pumpkin()
 	{
-		this.weight = 1;
-		this.age = 0;
-	}
-	
-	//Wachstum
-	//public void grow(int percent)
-	{
-		
-	}
-	
-	//Schrumpfung
-	public void shrink()
-	{
-		//grow(-1);
+		this.weight = 1.0;
+		this.age 	= 0;
 	}
 
+	/**
+	 * Lässt den Kürbiss je nach Wetter wachsen (und altern).
+	 * 0,05% pro Prozent Sonne am Tag und zusätzlich ist relevant ob eine Trockenperiode vorherrscht.
+	 * Durch feuchtes Wetter können Schnecken den Kürbis zerfressen.
+	 * @param d Aktueller Tag
+	 * @param c Wettkampf der alle vorherigen Tage gespeichert hat
+	 */
 	@Override
-	public void grow(Day d) {
-		// TODO Auto-generated method stub
-		weight += weight*growRate(d.getPerSun())/100;
-	}
-	
-	private double growRate(double percent)
+	public void grow(IntDay d, IntCompetition c)
 	{
-		return percent*5/100;
+		double growthrate = (d.getPerSun() * 0.05) + 1;
+
+		growthrate /= c.getAvgRain(5)<10 ? 2 : 1;
+		growthrate = c.getAvgRain(10)<10 ? 0 : growthrate;
+
+		this.weight *= growthrate;
+		this.weight -= this.snails(d, c)*weight;
+		this.age++;
 	}
 
+	/**
+	 * Liefert das Gewicht
+	 */
 	@Override
-	public double getWeight() {
-		// TODO Auto-generated method stub
+	public double getWeight()
+	{
 		return weight;
 	}
 
-	public int getAge() {
-		// TODO Auto-generated method stub
+	/**
+	 * Liefert das Alter
+	 */
+	@Override
+	public int getAge()
+	{
 		return age;
 	}
 

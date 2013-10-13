@@ -1,7 +1,7 @@
 
 public interface Growable {
 
-	public void grow( Day d );
+	public void grow( IntDay d, IntCompetition c);
 	public double getWeight();
-	
+	public int getAge();
 }
