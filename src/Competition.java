@@ -12,7 +12,7 @@ public class Competition implements IntCompetition{
 	/**
 	 * legt einen neuen Wettkampf an, 
 	 * legt die Anzahl der Tage des Wettkampfes fest
-	 * @param days Anzahl der Tage, die der Wettkampf dauern soll
+	 * @param duration Anzahl der Tage, die der Wettkampf dauern soll
 	 */
 	public Competition(int duration)
 	{
