@@ -62,16 +62,17 @@ public class Test {
 
 		// 1. bis 5.Tag: je 80 Prozent Sonne -> 4 Prozent Wachstum
 		for (int i =0; i<5; i++){
-			d.add(new Day(20));
+			d[i] = newDay(20);			
 		}
 
 		// 6. bis 10.Tag: je 99 Prozent Sonne (nur 1 Prozent Wasser) -> 4,95 Prozent Wachstum
-		for (int i =0; i<5; i++){
-			d.add(new Day(1));
+		for (int i =5; i<10; i++){
+			d[i] = newDay(1);
 		}
+		
 		// 11. bis 12.Tag: je 20 Prozent Wasser -> nur 2 statt 4 Prozent Wachstum wg. Trockenphase
-		for (int i =0; i<2; i++){
-			d.add(new Day(20));
+		for (int i =10; i<12; i++){
+			d[i] = newDay(1);
 		}
 
 
