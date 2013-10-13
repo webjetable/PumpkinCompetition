@@ -58,7 +58,7 @@ public class Test {
 	private static void testDrought5Days(){
 
 		Pumpkin p = new Pumpkin();
-		Days[] d = new Days[12];
+		Day[] d = new Day[12];
 
 		// 1. bis 5.Tag: je 80 Prozent Sonne -> 4 Prozent Wachstum
 		for (int i =0; i<5; i++){
