@@ -6,7 +6,7 @@ public class Competition implements IntCompetition{
 	 * @author Angelika
 	 */
 	private ArrayList<Day> comp;
-	private int days;
+	private int duration;
 	private int today;
 
 	/**
@@ -14,10 +14,10 @@ public class Competition implements IntCompetition{
 	 * legt die Anzahl der Tage des Wettkampfes fest
 	 * @param days Anzahl der Tage, die der Wettkampf dauern soll
 	 */
-	public Competition(int days)
+	public Competition(int duration)
 	{
 		comp = new ArrayList<Day>();
-		this.days = days;
+		this.duration = duration;
 	}
 
 	/**
@@ -34,7 +34,7 @@ public class Competition implements IntCompetition{
 
 		today = comp.size();
 
-		if(today>days)
+		if(today>duration)
 		{
 			throw new CompException("Wettkampf bereits beendet!!!");
 		}
@@ -72,5 +72,10 @@ public class Competition implements IntCompetition{
 		}
 
 		return (int) (average/days);
+	}
+	
+	public int getDuration()
+	{
+		return duration;
 	}
 }
