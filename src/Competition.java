@@ -6,13 +6,26 @@ public class Competition implements IntCompetition{
 	private int days;
 	private int today;
 
+	/**
+	 * legt einen neuen Wettkampf an, 
+	 * legt die Anzahl der Tage des Wettkampfes fest
+	 * @param days Anzahl der Tage, die der Wettkampf dauern soll
+	 */
 	public Competition(int days)
 	{
 		comp = new ArrayList<Day>();
 		this.days = days;
 	}
 
-	public void setNextDay(Day day) throws Exception
+	/**
+	 * fügt einen neuen Tag in den Wettkampf ein, 
+	 * zählt, der wievielte Tag heute ist
+	 * wenn die Anzahl der Wettkampftage überschritten wird, wird eine CompException geworfen.
+	 * @param day Der Tag, der zum Wettkampf hinzugefügt wird.
+	 * @throws Exception
+	 */
+	@Override
+	public void setNextDay(Day day) throws CompException
 	{
 		comp.add(day);
 
@@ -24,6 +37,10 @@ public class Competition implements IntCompetition{
 		}
 	}
 
+	/**
+	 * Gibt den Durchschnitt der Sonnenprozente im abgefragen Zeitraum an.
+	 * @param days Anzahl der Tage von heute zurück bis zum Tag x 
+	 */
 	@Override
 	public double getAvgSun(int days) {
 		// TODO Auto-generated method stub
@@ -37,6 +54,10 @@ public class Competition implements IntCompetition{
 		return (int) (average/days);
 	}
 
+	/**
+	 * Gibt den Durchschnitt der Wasserprozente im abgefragen Zeitraum an.
+	 * @param days Anzahl der Tage von heute zurück bis zum Tag x 
+	 */
 	@Override
 	public double getAvgRain(int days) {
 		// TODO Auto-generated method stub
