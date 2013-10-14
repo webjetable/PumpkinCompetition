@@ -49,7 +49,7 @@ public class Competition implements IntCompetition{
 		// TODO Auto-generated method stub
 		int average=0;
 
-		for(int i = comp.size()-days; i<=comp.size();i++)
+		for(int i = comp.size()-duration; i>=comp.size();i++)
 		{
 			average+=comp.get(i).getPerSun();
 		}
@@ -66,7 +66,7 @@ public class Competition implements IntCompetition{
 		// TODO Auto-generated method stub
 		int average=0;
 
-		for(int i = comp.size()-days; i<=comp.size();i++)
+		for(int i = comp.size()-duration; i>=comp.size();i++)
 		{
 			average+=comp.get(i).getPerRain();
 		}
