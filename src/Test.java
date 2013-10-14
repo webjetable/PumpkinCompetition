@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 
 public class Test {
 
@@ -13,13 +15,22 @@ public class Test {
 		testPumpkin();
 		
 		System.out.println("Test Neue Competition");
-		testCompetition();
+		try {testCompetition();}
+		catch (CompException ce){
+			System.out.println(ce.getMessage());
+		}
 
 		System.out.println("Test Gewichtszunahme unter normalen Bedingungen");
-		testStandardGrow();
+		try {testStandardGrow();}
+		catch (CompException ce){
+			System.out.println(ce.getMessage());
+		}
 
 		System.out.println("Test 5-Tages Trockenphase");
-		testDrought5Days();
+		try{testDrought5Days();}
+		catch (CompException ce){
+			System.out.println(ce.getMessage());
+		}
 
 		
 
@@ -38,26 +49,17 @@ public class Test {
 	 * 
 	 */
 
-	private static void testCompetition(){
+	private static void testCompetition() throws CompException{
 
 		Competition c = new Competition(2);
 
 		Day firstDay = new Day(20);
 		Day secondDay = new Day(80);
 
-		try{
-			c.setNextDay(firstDay);
-		}
-		catch (CompException ce){
-			System.out.println(ce.getMessage());
-		}
+		c.setNextDay(firstDay);
 		
-		try{
-			c.setNextDay(secondDay);
-		}
-		catch (CompException ce){
-			System.out.println(ce.getMessage());
-		}
+		c.setNextDay(secondDay);
+		
 		
 		System.out.println("Wettbewerbsdauer: " + c.getDuration()); // erwarteter Wert: 2
 		System.out.println();
@@ -70,17 +72,23 @@ public class Test {
 	 * sonst anteilsmaessig geringer)			
 	 */
 
-	private static void testStandardGrow(){
+	private static void testStandardGrow() throws CompException{
 
 		Pumpkin p = new Pumpkin();
 		Competition c1 = new Competition(2);
 
-		Day firstDay = new Day(20); // 1.Tag: 80 Prozent Sonne -> 4 Prozent Wachstum
-		p.grow(firstDay, c1);
+		Day firstDay = new Day(20);
+		Day secondDay = new Day(30);
+		
+		c1.setNextDay(firstDay); // 1.Tag: 80 Prozent Sonne -> 4 Prozent Wachstum
+		
+		// eigentlich will ich hier einfach den Kürbis wachsen lassen, also mit p.grow(c1)
+		p.grow(firstDay, c1); 
 		System.out.println("Gewicht Tag 1: " + p.getWeight()); //erwarteter Wert: 1,04
 
-		Day secondDay = new Day(30); // 2.Tag: 70 Prozent Sonne -> 3,5 Prozent Wachstum
-		p.grow(secondDay,c1);
+		c1.setNextDay(secondDay);
+				
+		p.grow(secondDay, c1); // 2.Tag: 70 Prozent Sonne -> 3,5 Prozent Wachstum
 		System.out.println("Gewicht Tag 2: " + p.getWeight()); //erwarteter Wert: 1,0764
 		System.out.println();
 	}
@@ -92,7 +100,7 @@ public class Test {
 	 * Haelfte zurueck. 
 	 */
 
-	private static void testDrought5Days(){
+	private static void testDrought5Days() throws CompException{
 
 		Pumpkin p = new Pumpkin();
 		Competition c = new Competition(12);

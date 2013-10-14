@@ -78,4 +78,11 @@ public class Competition implements IntCompetition{
 	{
 		return duration;
 	}
+	
+	// @author Brigitte
+	
+	public ArrayList<Day> getComp(){
+		return comp;
+	}
+	
 }
