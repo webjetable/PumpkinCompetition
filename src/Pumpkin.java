@@ -16,11 +16,15 @@ public class Pumpkin implements Growable
 	private double snails(IntDay d, IntCompetition c)
 	{
 		double snailrate = 0.0;
-
+		
 		snailrate += d.getPerRain()>=50	 ? 0.1 : 0.0;  
-		snailrate += c.getAvgRain(2)>=30 ? 0.1 : 0.0;
-		snailrate += c.getAvgRain(4)>=10 ? 0.1 : 0.0;
-
+		try
+		{		
+			snailrate += c.getAvgRain(2)>=30 ? 0.1 : 0.0;
+			snailrate += c.getAvgRain(4)>=10 ? 0.1 : 0.0;
+		}
+		catch( CompException e ) {} // Overflow von getAvg durch Exception kontrolliert
+		
 		return snailrate;
 	}
 
@@ -45,11 +49,15 @@ public class Pumpkin implements Growable
 	{
 		double growthrate = d.getPerSun() * 0.05;
 
-		growthrate /= c.getAvgRain(5)<10 ? 2 : 1;
-		growthrate = c.getAvgRain(10)<10 ? 0 : growthrate;
-
+		try
+		{
+			growthrate /= c.getAvgRain(5)<10 ? 2 : 1;
+			growthrate = c.getAvgRain(10)<10 ? 0 : growthrate;
+		}
+		catch( CompException e ) {} // Overflow von getAvg durch Exception kontrolliert
+		
 		this.weight *= (growthrate + 1);
-		this.weight -= this.snails(d, c)*weight;
+		this.weight -= this.snails(d, c)*this.weight;
 		this.age++;
 	}
 
@@ -59,7 +67,7 @@ public class Pumpkin implements Growable
 	@Override
 	public double getWeight()
 	{
-		return weight;
+		return this.weight;
 	}
 
 	/**
@@ -68,7 +76,7 @@ public class Pumpkin implements Growable
 	@Override
 	public int getAge()
 	{
-		return age;
+		return this.age;
 	}
 
 }
