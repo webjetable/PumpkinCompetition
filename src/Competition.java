@@ -21,10 +21,10 @@ public class Competition implements IntCompetition{
 	}
 
 	/**
-	 * fŸgt einen neuen Tag in den Wettkampf ein, 
-	 * zŠhlt, der wievielte Tag heute ist
-	 * wenn die Anzahl der Wettkampftage Ÿberschritten wird, wird eine CompException geworfen.
-	 * @param day Der Tag, der zum Wettkampf hinzugefŸgt wird.
+	 * fï¿½gt einen neuen Tag in den Wettkampf ein, 
+	 * zï¿½hlt, der wievielte Tag heute ist
+	 * wenn die Anzahl der Wettkampftage ï¿½berschritten wird, wird eine CompException geworfen.
+	 * @param day Der Tag, der zum Wettkampf hinzugefï¿½gt wird.
 	 * @throws Exception
 	 */
 	@Override
@@ -36,53 +36,49 @@ public class Competition implements IntCompetition{
 
 		if(today>duration)
 		{
-			throw new CompException("Wettkampf bereits beendet!!!");
+			throw new CompException("Wettkampf bereits beendet!");
 		}
 	}
 
 	/**
 	 * Gibt den Durchschnitt der Sonnenprozente im abgefragen Zeitraum an.
-	 * @param days Anzahl der Tage von heute zurŸck bis zum Tag x 
+	 * @param days Anzahl der Tage von heute zurï¿½ck bis zum Tag x 
 	 */
 	@Override
-	public double getAvgSun(int days) {
-		// TODO Auto-generated method stub
-		int average=0;
+	public double getAvgSun(int days) throws CompException
+	{
+		int sum = 0;
+		
+		if( days>comp.size() )
+			throw new CompException("Not enough Data!");
 
-		for(int i = comp.size()-duration; i>=comp.size();i++)
-		{
-			average+=comp.get(i).getPerSun();
-		}
-
-		return (int) (average/days);
+		for(int i = 1; i<=days; i++)
+			sum += comp.get(comp.size()-i).getPerSun();
+			
+		return sum/days;
 	}
 
 	/**
 	 * Gibt den Durchschnitt der Wasserprozente im abgefragen Zeitraum an.
-	 * @param days Anzahl der Tage von heute zurŸck bis zum Tag x 
+	 * @param days Anzahl der Tage von heute zurï¿½ck bis zum Tag x 
 	 */
 	@Override
-	public double getAvgRain(int days) {
-		// TODO Auto-generated method stub
-		int average=0;
+	public double getAvgRain(int days)
+	{
+		int sum = 0;
+		
+		if( days>comp.size() )
+			throw new CompException("Not enough Data!");
 
-		for(int i = comp.size()-duration; i>=comp.size();i++)
-		{
-			average+=comp.get(i).getPerRain();
-		}
-
-		return (int) (average/days);
+		for(int i = 1; i<=days; i++)
+			sum += comp.get(comp.size()-i).getPerRain();
+			
+		return sum/days;
 	}
 	
 	public int getDuration()
 	{
 		return duration;
-	}
-	
-	// @author Brigitte
-	
-	public ArrayList<Day> getComp(){
-		return comp;
 	}
 	
 }
