@@ -9,7 +9,7 @@ public class Pumpkin implements Growable
 	private int 	age;
 	
 	/**
-	 * Liefert den Prozentsatz des KŸrbisses der von Schecken zerfressen wird.
+	 * Liefert den Prozentsatz des Kï¿½rbisses der von Schecken zerfressen wird.
 	 * @param d Aktueller Tag
 	 * @param c Wettkampf der alle vorherigen Tage gespeichert hat
 	 */
@@ -25,30 +25,30 @@ public class Pumpkin implements Growable
 	}
 
 	/**
-	 * Generiert einen KŸrbis mit Gewicht und Alter.
+	 * Generiert einen Kï¿½rbis mit Gewicht und Alter.
 	 */
 	public Pumpkin()
 	{
-		this.weight = 1.0;
+		this.weight 	= 1.0;
 		this.age 	= 0;
 	}
 
 	/**
-	 * LŠsst den KŸrbiss je nach Wetter wachsen (und altern).
-	 * 0,05% pro Prozent Sonne am Tag und zusŠtzlich ist relevant ob eine Trockenperiode vorherrscht.
-	 * Durch feuchtes Wetter kšnnen Schnecken den KŸrbis zerfressen.
+	 * Lï¿½sst den Kï¿½rbiss je nach Wetter wachsen (und altern).
+	 * 0,05% pro Prozent Sonne am Tag und zusï¿½tzlich ist relevant ob eine Trockenperiode vorherrscht.
+	 * Durch feuchtes Wetter kï¿½nnen Schnecken den Kï¿½rbis zerfressen.
 	 * @param d Aktueller Tag
 	 * @param c Wettkampf der alle vorherigen Tage gespeichert hat
 	 */
 	@Override
 	public void grow(IntDay d, IntCompetition c)
 	{
-		double growthrate = (d.getPerSun() * 0.05) + 1;
+		double growthrate = d.getPerSun() * 0.05;
 
 		growthrate /= c.getAvgRain(5)<10 ? 2 : 1;
 		growthrate = c.getAvgRain(10)<10 ? 0 : growthrate;
 
-		this.weight *= growthrate;
+		this.weight *= (growthrate + 1);
 		this.weight -= this.snails(d, c)*weight;
 		this.age++;
 	}
