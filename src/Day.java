@@ -1,16 +1,21 @@
-
 public class Day implements IntDay{
 
 	/**
 	 * @author Angelika
 	 */
-	public static int dayCompetition;
-
-	//gibt an, der wievielte Wettkampftag dieser Tag ist.
-	private final int dayID;
 
 	private int percSun;
 	private int percWater;
+
+	/**
+	 * Defaultkonstruktor
+	 * falls keine Angaben zum Tag gemacht werden gibt es weder Regen noch Sonne
+	 */
+	public Day()
+	{
+		this.percSun 	= 0;
+		this.percWater 	= 0;
+	}
 
 	/**
 	 * Konstruktor
@@ -18,10 +23,8 @@ public class Day implements IntDay{
 	 */
 	public Day(int percentWater)
 	{
-		this.percSun = 100-percentWater;
-		this.percWater = percentWater;
-		Day.dayCompetition += 1;
-		dayID = dayCompetition;
+		this.percSun 	= 100-percentWater;
+		this.percWater 	= percentWater;
 	}
 
 
@@ -29,8 +32,8 @@ public class Day implements IntDay{
 	 * gibt an, wieviel Prozent Sonne an diesem Tag sind.
 	 */
 	@Override
-	public int getPerSun() {
-		// TODO Auto-generated method stub
+	public int getPerSun()
+	{
 		return percSun;
 	}
 
@@ -38,37 +41,28 @@ public class Day implements IntDay{
 	 * gibt an, wieviel Prozent Wasser an diesem Tag sind.
 	 */
 	@Override
-	public int getPerRain() {
-		// TODO Auto-generated method stub
+	public int getPerRain()
+	{
 		return percWater;
 	}
 
 	/**
-	 * gibt true zurŸck, wenn 100 % Sonne an diesem Tag sind.
+	 * gibt true zurï¿½ck, wenn 100 % Sonne an diesem Tag sind.
 	 */
 	@Override
 	public boolean isSunny()
 	{
-		return (percSun == 100) ? true:false;
+		return percSun == 100 ? true:false;
 
 	}
 
 	/**
-	 * gibt true zurŸck, wenn 100 % Wasser an diesem Tag sind.
+	 * gibt true zurï¿½ck, wenn 100 % Wasser an diesem Tag sind.
 	 */
 	@Override
-	public boolean isRainy() {
-		// TODO Auto-generated method stub
-		return (percWater == 100) ? true:false;
+	public boolean isRainy()
+	{
+		return percWater == 100 ? true:false;
 	}
-
-	/**
-	 * Gibt zurŸck, der wievielte Wettkampftag dieser Tag ist.
-	 */
-	@Override
-	public int getDayID() {
-		return dayID;
-	}
-
 
 }
