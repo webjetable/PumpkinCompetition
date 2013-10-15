@@ -9,9 +9,9 @@ public class Pumpkin implements Growable
 	private int 	age;
 	
 	/**
-	 * Liefert den Prozentsatz des K�rbisses der von Schecken zerfressen wird.
-	 * @param d Aktueller Tag
-	 * @param c Wettkampf der alle vorherigen Tage gespeichert hat
+	 * Returns the percentage of pumpkin that will be eaten by snails.
+	 * @param d current day
+	 * @param c Competition that saves all past days
 	 */
 	private double snails(IntDay d, IntCompetition c)
 	{
@@ -23,13 +23,13 @@ public class Pumpkin implements Growable
 			snailrate += c.getAvgRain(2)>=30 ? 0.1 : 0.0;
 			snailrate += c.getAvgRain(4)>=10 ? 0.1 : 0.0;
 		}
-		catch( CompException e ) {} // Overflow von getAvg durch Exception kontrolliert
+		catch( CompException e ) {} // Overflow of getAvg controlled by Exception
 		
 		return snailrate;
 	}
 
 	/**
-	 * Generiert einen K�rbis mit Gewicht und Alter.
+	 * Creates a new pumpkin with age and weight
 	 */
 	public Pumpkin()
 	{
@@ -38,23 +38,23 @@ public class Pumpkin implements Growable
 	}
 
 	/**
-	 * L�sst den K�rbiss je nach Wetter wachsen (und altern).
-	 * 0,05% pro Prozent Sonne am Tag und zus�tzlich ist relevant ob eine Trockenperiode vorherrscht.
-	 * Durch feuchtes Wetter k�nnen Schnecken den K�rbis zerfressen.
-	 * @param d Aktueller Tag
-	 * @param c Wettkampf der alle vorherigen Tage gespeichert hat
+	 * Lets the Pumpkin age and grow in relation to the current and past weather.
+	 * 1% of sun results in 0.05% growth, the amount of rain the last days results in less (or no) growth.
+	 * Too much rain results in in the pumpkin getting eaten by snails.
+	 * @param d Current day
+	 * @param c Competition that saves all past days
 	 */
 	@Override
 	public void grow(IntDay d, IntCompetition c)
 	{
-		double growthrate = d.getPerSun() * 0.05;
+		double growthrate = d.getPerSun() * 0.0005;
 
 		try
 		{
 			growthrate /= c.getAvgRain(5)<10 ? 2 : 1;
 			growthrate = c.getAvgRain(10)<10 ? 0 : growthrate;
 		}
-		catch( CompException e ) {} // Overflow von getAvg durch Exception kontrolliert
+		catch( CompException e ) {} // Overflow of getAvg controlled by Exception
 		
 		this.weight *= (growthrate + 1);
 		this.weight -= this.snails(d, c)*this.weight;
@@ -62,7 +62,7 @@ public class Pumpkin implements Growable
 	}
 
 	/**
-	 * Liefert das Gewicht
+	 * Returns the weight
 	 */
 	@Override
 	public double getWeight()
@@ -71,7 +71,7 @@ public class Pumpkin implements Growable
 	}
 
 	/**
-	 * Liefert das Alter
+	 * Returns the age
 	 */
 	@Override
 	public int getAge()
