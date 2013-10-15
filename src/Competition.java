@@ -10,9 +10,9 @@ public class Competition implements IntCompetition{
 	private int today;
 
 	/**
-	 * legt einen neuen Wettkampf an, 
-	 * legt die Anzahl der Tage des Wettkampfes fest
-	 * @param duration Anzahl der Tage, die der Wettkampf dauern soll
+	 * creates a new competetion, 
+	 * defines the amount of days in a competition
+	 * @param duration amount of days the competition should last
 	 */
 	public Competition(int duration)
 	{
@@ -21,11 +21,10 @@ public class Competition implements IntCompetition{
 	}
 
 	/**
-	 * f�gt einen neuen Tag in den Wettkampf ein, 
-	 * z�hlt, der wievielte Tag heute ist
-	 * wenn die Anzahl der Wettkampftage �berschritten wird, wird eine CompException geworfen.
-	 * @param day Der Tag, der zum Wettkampf hinzugef�gt wird.
-	 * @throws Exception
+	 * inserts a new day to the competition, 
+	 * counts which day, today is.
+	 * @param day The day which will be inserted
+	 * @throws CompException If the limit of Days is reached a CompException will be thrown.
 	 */
 	@Override
 	public void setNextDay(Day day) throws CompException
@@ -36,13 +35,14 @@ public class Competition implements IntCompetition{
 
 		if(today>duration)
 		{
-			throw new CompException("Wettkampf bereits beendet!");
+			throw new CompException("Competition is over!");
 		}
 	}
 
 	/**
-	 * Gibt den Durchschnitt der Sonnenprozente im abgefragen Zeitraum an.
-	 * @param days Anzahl der Tage von heute zur�ck bis zum Tag x 
+	 * Returns the average of percent of sun in the questioned amount of time.
+	 * @param days Amount of days from "today" to compute the average
+	 * @throws CompException if the Competition lasts not long enough to get the Average
 	 */
 	@Override
 	public double getAvgSun(int days) throws CompException
@@ -59,11 +59,12 @@ public class Competition implements IntCompetition{
 	}
 
 	/**
-	 * Gibt den Durchschnitt der Wasserprozente im abgefragen Zeitraum an.
-	 * @param days Anzahl der Tage von heute zur�ck bis zum Tag x 
+	 * Returns the average of percent of rain in the questioned amount of time.
+	 * @param days Amount of days from "today" to compute the average
+	 * @throws CompException if the Competition lasts not long enough to get the Average
 	 */
 	@Override
-	public double getAvgRain(int days)
+	public double getAvgRain(int days) throws CompException
 	{
 		int sum = 0;
 		

@@ -8,8 +8,8 @@ public class Day implements IntDay{
 	private int percWater;
 
 	/**
-	 * Defaultkonstruktor
-	 * falls keine Angaben zum Tag gemacht werden gibt es weder Regen noch Sonne
+	 * Default constructor
+	 * if no information about the day is given there is no sun nor rain.
 	 */
 	public Day()
 	{
@@ -18,8 +18,8 @@ public class Day implements IntDay{
 	}
 
 	/**
-	 * Konstruktor
-	 * @param percentWater Gibt an, wieviel Prozent Wasser gegeben wurden
+	 * Constructor
+	 * @param percentWater tells the percentage of water given
 	 */
 	public Day(int percentWater)
 	{
@@ -29,7 +29,7 @@ public class Day implements IntDay{
 
 
 	/**
-	 * gibt an, wieviel Prozent Sonne an diesem Tag sind.
+	 * returns the percentage of sun on this day.
 	 */
 	@Override
 	public int getPerSun()
@@ -38,7 +38,7 @@ public class Day implements IntDay{
 	}
 
 	/**
-	 * gibt an, wieviel Prozent Wasser an diesem Tag sind.
+	 * returns the percentage of rain on this day.
 	 */
 	@Override
 	public int getPerRain()
@@ -47,7 +47,7 @@ public class Day implements IntDay{
 	}
 
 	/**
-	 * gibt true zur�ck, wenn 100 % Sonne an diesem Tag sind.
+	 * returns true if the percentage of sun is 100%
 	 */
 	@Override
 	public boolean isSunny()
@@ -57,7 +57,7 @@ public class Day implements IntDay{
 	}
 
 	/**
-	 * gibt true zur�ck, wenn 100 % Wasser an diesem Tag sind.
+	 * returns true if the percentage of rain is 100%
 	 */
 	@Override
 	public boolean isRainy()
