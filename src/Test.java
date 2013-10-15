@@ -11,22 +11,22 @@ public class Test {
 	public static void main(String[] args) {
 
 
-		System.out.println("Test Neuer Kuerbis" + "\n");
+		System.out.println("Test New Pumpkin" + "\n");
 		testPumpkin();
 		
-		System.out.println("Test Neue Competition");
+		System.out.println("Test New Competition");
 		try {testCompetition();}
 		catch (CompException ce){
 			System.out.println(ce.getMessage());
 		}
 
-		System.out.println("Test Gewichtszunahme unter normalen Bedingungen");
+		System.out.println("Test Growth Under Normal Conditions");
 		try {testStandardGrow();}
 		catch (CompException ce){
 			System.out.println(ce.getMessage());
 		}
 
-		System.out.println("Test 5-Tages Trockenphase");
+		System.out.println("Test 5-Day Dry-Spell");
 		try{testDrought5Days();}
 		catch (CompException ce){
 			System.out.println(ce.getMessage());
@@ -36,16 +36,16 @@ public class Test {
 
 	}
 
-	// Test der Klasse Pumpkin
+	// Test the class Pumpkin
 	private static void testPumpkin(){
 		Pumpkin p = new Pumpkin();
-		System.out.println("Gewicht: " + p.getWeight()); // erwarteter Wert: 1.0
-		System.out.println("Gewicht: " + p.getAge()); // erwarteter Wert: 0
+		System.out.println("Weight: " + p.getWeight()); // Expected value: 1.0
+		System.out.println("Age: " + p.getAge()); // Expected value: 0
 		System.out.println();
 	}
 	
 	/*
-	 * Test der Klasse Competition
+	 * Test the class Competition
 	 * 
 	 */
 
@@ -61,15 +61,15 @@ public class Test {
 		c.setNextDay(secondDay);
 		
 		
-		System.out.println("Wettbewerbsdauer: " + c.getDuration()); // erwarteter Wert: 2
+		System.out.println("Duration of Competition: " + c.getDuration()); // Expected value: 2
 		System.out.println();
 		
 	}
 	
 
 	/*
-	 * Test Gewichtszunahme unter normalen Bedingungen (5Prozent Wachstum bei 100Prozent Licht,
-	 * sonst anteilsmaessig geringer)			
+	 * Test the growth under normal Conditions (5% growth at 100% Sun,
+	 * otherwise proportionally less)			
 	 */
 
 	private static void testStandardGrow() throws CompException{
@@ -80,16 +80,16 @@ public class Test {
 		Day firstDay = new Day(20);
 		Day secondDay = new Day(30);
 		
-		c1.setNextDay(firstDay); // 1.Tag: 80 Prozent Sonne -> 4 Prozent Wachstum
+		c1.setNextDay(firstDay); // 1st day: 80% Sun -> 4% growth
 		
-		// eigentlich will ich hier einfach den Kürbis wachsen lassen, also mit p.grow(c1)
+		// eigentlich will ich hier einfach den Kuerbis wachsen lassen, also mit p.grow(c1)
 		p.grow(firstDay, c1); 
-		System.out.println("Gewicht Tag 1: " + p.getWeight()); //erwarteter Wert: 1,04
+		System.out.println("Weight Day 1: " + p.getWeight()); //Expected value: 1,04
 
 		c1.setNextDay(secondDay);
 				
 		p.grow(secondDay, c1); // 2.Tag: 70 Prozent Sonne -> 3,5 Prozent Wachstum
-		System.out.println("Gewicht Tag 2: " + p.getWeight()); //erwarteter Wert: 1,0764
+		System.out.println("Weight Day 2: " + p.getWeight()); //Expected value: 1,0764
 		System.out.println();
 	}
 
@@ -126,8 +126,8 @@ public class Test {
 			p.grow(d[i],c);
 		}
 
-		System.out.println("Gewicht 2 Tage nach 5 taegiger Trockenphase: " 
-				+ p.getWeight()); //erwarteter Wert: 1,62
+		System.out.println("Weight 2 Days after 5 Day Dry-Spell: " 
+				+ p.getWeight()); //Expected value: 1,62
 		System.out.println();
 
 	}
@@ -157,12 +157,12 @@ weiters zu testen
  * Hat es in den letzten 10 Tagen zusammengenommen weniger als 10% Wasser gegeben, wird das 
  * Wachstum sogar ganz eingestellt.
 
-Schnecken lieben Feuchtigkeit, vor allem gleichmäßige Feuchtigkeit. An jedem Tag mit 
-mindestens 50% Wasser machen sie sich über die Blätter her und sorgen dafür, dass der Kürbis 
-1% seines Gewichts verliert. Ab 30% Wasser in den letzten 2 Tagen verliert der Kürbis 
+Schnecken lieben Feuchtigkeit, vor allem gleichmaeSzige Feuchtigkeit. An jedem Tag mit 
+mindestens 50% Wasser machen sie sich ueber die Blaetter her und sorgen dafuer, dass der Kuerbis 
+1% seines Gewichts verliert. Ab 30% Wasser in den letzten 2 Tagen verliert der Kuerbis 
 ebenso 1% des Gewichts, genauso wie ab 10% Wasser in den letzten 4 Tagen.
 
-Die tatsächlichen klimatischen Bedingungen dürfen nicht ganz außer Acht gelassen werden. 
+Die tatsaechlichen klimatischen Bedingungen duerfen nicht ganz auSzer Acht gelassen werden. 
 Daher muss es mindestens 10 Tage mit 100% Wasser und mindestens 10 Tage mit 100% Sonne geben.
-Wird der Kürbis an einem Tag gar nicht versorgt, erhält er weder Wasser noch Licht.
+Wird der Kuerbis an einem Tag gar nicht versorgt, erhaelt er weder Wasser noch Licht.
  */
